@@ -11,7 +11,7 @@ st.text('')
 
 st.subheader('Weather in the clouds, rain, sun, or snow, we always deliver the answers', divider=True)
 
-st.text('Please enter the following data to predict the weather (Rainy, Cloudy, Sunny, or Snowy):')
+st.text('Please enter the following data to classify the weather (Rainy, Cloudy, Sunny, or Snowy):')
 
 temperature = st.number_input('Temperature (Celsius)')
 
@@ -46,7 +46,7 @@ st.text('')
 col1, col2, col3 = st.columns((1, 1, 1))
 
 with col2:
-    submit_button = st.button('Predict Weather', type='primary', use_container_width=True)
+    submit_button = st.button('Classify Weather', type='primary', use_container_width=True)
 
 st.text('')
 
@@ -64,7 +64,7 @@ if submit_button:
     input_df = input_df.reindex(columns=model.feature_names_in_, fill_value=0)
 
     pred = model.predict(input_df)[0]
-    st.success(f'The predicted weather is: {pred}')
+    st.success(f'The weather is classified as: {pred}')
 
     match pred:
         case 'Rainy':
