@@ -6,7 +6,9 @@ import joblib
 model = joblib.load('model.pkl')
 
 st.title('Weather Classification')
-st.write('Please enter the following data to predict the weather (Rainy, Cloudy, Sunny, or Snowy):')
+st.text('Weather in the clouds, rain, sun, or snow, we always deliver your answers')
+
+st.text('Please enter the following data to predict the weather (Rainy, Cloudy, Sunny, or Snowy):')
 
 temperature = st.number_input('Temperature (Celsius)')
 
@@ -71,4 +73,4 @@ if submit_button:
         case 'Snowy':
             st.image('images/nature-7000445_1280.jpg')
         case _:
-            st.text('Image')
+            st.text('Invalid Result')
