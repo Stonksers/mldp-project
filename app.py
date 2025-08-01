@@ -54,6 +54,5 @@ if submit_button:
 
     pred = model.predict(input_df)
     st.success(f'The predicted weather is: {pred[0]}')
-    input_df
 
 
