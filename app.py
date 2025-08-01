@@ -33,6 +33,7 @@ with precipitation_col2:
     precipitation_input = st.number_input('Or enter Precipitation (%) here', min_value=0.0, max_value=100.0, value=precipitation_slider)
 
 precipitation = precipitation_input
+precipitation
 
 cloud_cover = st.selectbox('Cloud Cover', ('Clear', 'Partly Cloudy', 'Cloudy', 'Overcast'))
 
@@ -42,9 +43,9 @@ if submit_button:
     input_df = pd.DataFrame({
         'Temperature': [temperature], 
         'Humidity': [humidity], 
-        'Precipitation': [precipitation],
+        'Precipitation (%)': [precipitation],
         'UV Index': [uv_index], 
-        'Visibility': [visibility],
+        'Visibility (km)': [visibility],
         'Cloud Cover': [cloud_cover.lower()],
     })
 
@@ -53,5 +54,6 @@ if submit_button:
 
     pred = model.predict(input_df)
     st.success(f'The predicted weather is: {pred[0]}')
+    input_df
 
 
