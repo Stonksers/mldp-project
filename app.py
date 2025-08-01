@@ -9,7 +9,7 @@ st.title('Weather Classification')
 
 st.text('')
 
-st.subheader('Weather in the clouds, rain, sun, or snow, we always deliver the answers', divider='grey')
+st.subheader('Weather in the clouds, rain, sun, or snow, we always deliver the answers', divider=True)
 
 st.text('Please enter the following data to predict the weather (Rainy, Cloudy, Sunny, or Snowy):')
 
