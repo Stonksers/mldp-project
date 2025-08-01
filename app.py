@@ -33,11 +33,17 @@ with precipitation_col2:
     precipitation_input = st.number_input('Or enter Precipitation (%) here', min_value=0.0, max_value=100.0, value=precipitation_slider)
 
 precipitation = precipitation_input
-precipitation
 
 cloud_cover = st.selectbox('Cloud Cover', ('Clear', 'Partly Cloudy', 'Cloudy', 'Overcast'))
 
-submit_button = st.button('Predict Weather', type='primary')
+st.text('')
+
+col1, col2, col3 = st.columns((1, 1, 1))
+
+with col2:
+    submit_button = st.button('Predict Weather', type='primary', use_container_width=True)
+
+st.text('')
 
 if submit_button:
     input_df = pd.DataFrame({
@@ -52,7 +58,17 @@ if submit_button:
     input_df = pd.get_dummies(input_df, columns=['Cloud Cover'])
     input_df = input_df.reindex(columns=model.feature_names_in_, fill_value=0)
 
-    pred = model.predict(input_df)
-    st.success(f'The predicted weather is: {pred[0]}')
+    pred = model.predict(input_df)[0]
+    st.success(f'The predicted weather is: {pred}')
 
-
+    match pred:
+        case 'Rainy':
+            st.image('images/glass-window-1845534_1280.jpg')
+        case 'Cloudy':
+            st.image('images/clouds-4258726_1280.jpg')
+        case 'Sunny':
+            st.image('images/death-valley-3133502_1280.jpg')
+        case 'Snowy':
+            st.image('images/nature-7000445_1280.jpg')
+        case _:
+            st.text('Image')
