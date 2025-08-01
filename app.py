@@ -43,9 +43,9 @@ if submit_button:
         'Temperature': [temperature], 
         'Humidity': [humidity], 
         'Precipitation': [precipitation],
-        'Cloud Cover': [cloud_cover.lower()],
         'UV Index': [uv_index], 
         'Visibility': [visibility],
+        'Cloud Cover': [cloud_cover.lower()],
     })
 
     input_df = pd.get_dummies(input_df, columns=['Cloud Cover'])
